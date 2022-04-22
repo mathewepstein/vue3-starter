@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "dev": "vite --port 3333 --open",
-    "build": "vite build",
+    "build": "cross-env NODE_ENV=production vite-ssg build",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -33,6 +33,7 @@
     "vite": "^2.8.6",
     "vite-plugin-pages": "^0.21.4",
     "vite-plugin-vue-layouts": "^0.6.0",
-    "vite-plugin-windicss": "^1.8.3"
+    "vite-plugin-windicss": "^1.8.3",
+    "vite-ssg": "^0.19.2"
   }
 }

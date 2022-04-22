@@ -43,13 +43,21 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS(),
   ],
+  base: '/',
   build: {
-    outDir: './dist/',
+    outDir: 'dist',
     emptyOutDir: true,
-    cssCodeSplit: false,
-    minify: 'terser',
   },
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src'), '~@': path.resolve(__dirname, '/src') },
+  },
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+    dirStyle: 'nested',
+  },
+  optimizeDeps: {
+    include: ['vue', 'vue-router', '@vueuse/core'],
+    exclude: ['vue-demi'],
   },
 })
