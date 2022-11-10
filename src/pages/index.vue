@@ -1,9 +1,6 @@
-<template>
-  <div>Welcome</div>
-</template>
-
-<script setup></script>
+<script setup lang="ts"></script>
 
 <route lang="yaml">
-name: home
+meta:
+  layout: home
 </route>

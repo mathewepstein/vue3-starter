@@ -1,18 +1,24 @@
+/// <reference types="vitest" />
+
+import path from 'path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import WindiCSS from 'vite-plugin-windicss'
-const path = require('path')
+import AutoImport from 'unplugin-auto-import/vite'
+import Unocss from 'unocss/vite'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
   plugins: [
-    Vue(),
+    Vue({
+      reactivityTransform: true,
+    }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
@@ -22,42 +28,31 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/head', '@vueuse/core'],
-    }),
-
-    // https://github.com/antfu/unplugin-components
-    Components({
-      resolvers: [
-        IconsResolver({
-          prefix: false,
-        }),
+      imports: [
+        'vue',
+        'vue/macros',
+        'vue-router',
+        '@vueuse/core',
       ],
-      // allow auto load markdown components under `./src/components/`
-      extensions: ['vue'],
+      dts: true,
+      dirs: [
+        './src/composables',
+      ],
+      vueTemplate: true,
     }),
 
-    Icons({
-      autoInstall: true,
+    // https://github.com/antfu/vite-plugin-components
+    Components({
+      dts: true,
     }),
 
-    // https://github.com/antfu/vite-plugin-windicss
-    WindiCSS(),
+    // https://github.com/antfu/unocss
+    // see unocss.config.ts for config
+    Unocss(),
   ],
-  base: '/',
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-  },
-  resolve: {
-    alias: { '@': path.resolve(__dirname, 'src'), '~@': path.resolve(__dirname, '/src') },
-  },
-  ssgOptions: {
-    script: 'async',
-    formatting: 'minify',
-    dirStyle: 'nested',
-  },
-  optimizeDeps: {
-    include: ['vue', 'vue-router', '@vueuse/core'],
-    exclude: ['vue-demi'],
+
+  // https://github.com/vitest-dev/vitest
+  test: {
+    environment: 'jsdom',
   },
 })

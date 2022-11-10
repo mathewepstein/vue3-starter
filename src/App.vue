@@ -1,7 +1,5 @@
 <template>
-  <router-view v-slot="{ Component, route }">
-    <transition name="slide">
-      <component :is="Component" :key="route" />
-    </transition>
-  </router-view>
+  <main class="container mx-auto px-1rem font-sans dark:text-coolgray-300">
+    <router-view />
+  </main>
 </template>
