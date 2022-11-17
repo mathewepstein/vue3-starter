@@ -2,17 +2,21 @@
   "private": true,
   "packageManager": "pnpm@7.12.0",
   "scripts": {
-    "build": "vite build",
+    "build": "vite-ssg build",
     "dev": "vite --port 3333 --open",
     "lint": "eslint .",
-    "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
+    "preview-https": "serve dist",
     "test": "vitest",
+    "test:e2e": "cypress open",
+    "test:unit": "vitest",
+    "typecheck": "vue-tsc --noEmit",
     "up": "taze major -I"
   },
   "dependencies": {
     "@vueuse/core": "^9.5.0",
     "@vueuse/head": "^1.0.16",
+    "pinia": "^2.0.23",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -23,6 +27,9 @@
     "@unocss/reset": "^0.46.5",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vue/test-utils": "^2.2.3",
+    "critters": "^0.0.16",
+    "cross-env": "^7.0.3",
+    "cypress": "^10.11.0",
     "eslint": "^8.27.0",
     "jsdom": "^20.0.2",
     "pnpm": "^7.16.1",

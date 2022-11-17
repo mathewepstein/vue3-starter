@@ -1,5 +1,5 @@
 <script setup lang="ts">
-setDarkMode()
+if (!import.meta.env.SSR) setDarkMode()
 </script>
 
 <template>
