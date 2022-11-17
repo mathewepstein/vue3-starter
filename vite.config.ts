@@ -33,6 +33,7 @@ export default defineConfig({
         'vue/macros',
         'vue-router',
         '@vueuse/core',
+        '@vueuse/head',
       ],
       dts: true,
       dirs: [
