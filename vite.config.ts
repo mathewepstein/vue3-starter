@@ -9,8 +9,14 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
+import postcssNesting from 'postcss-nesting'
 
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [postcssNesting],
+    },
+  },
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,

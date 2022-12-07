@@ -1,7 +1,4 @@
 <script setup lang="ts">
-useHead({
-  title: 'Vitesse',
-})
 </script>
 
 <route lang="yaml">
