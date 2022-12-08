@@ -2,9 +2,9 @@
 
 <route lang="yaml">
 meta:
-  layout: home
+  layout: default
 </route>
 
 <template>
-  <div />
+  <HomeHero />
 </template>

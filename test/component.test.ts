@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import HomeBanner from '../src/components/HomeBanner.vue'
+import HomeHero from '../src/components/HomeHero.vue'
 
-describe('HomeBanner.vue', () => {
+describe('HomeHero.vue', () => {
   it('should render', () => {
-    const wrapper = mount(HomeBanner)
-    expect(wrapper.text()).toContain('soon')
+    const wrapper = mount(HomeHero)
+    expect(wrapper.text()).toContain('Welcome')
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
