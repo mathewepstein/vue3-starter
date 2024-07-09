@@ -1,10 +1,13 @@
 {
   "prettier.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "files.associations": {
-    "*.css": "postcss"
+    "*.css": "css"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "i18n-ally.localesPaths": [
+    "src/locales"
+  ]
 }

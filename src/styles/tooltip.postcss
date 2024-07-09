@@ -1,0 +1,73 @@
+:root {
+  --v-tooltip-width: 475px;
+  --v-tooltip-background-color: #fff;
+  --v-tooltip-color: var(--tls-text-color);
+  --v-tooltip-border-radius: 0.4rem;
+  --v-tooltip-padding: 0.6em;
+  --v-tooltip-font-size: 0.8rem;
+  --v-tooltip-border: none;
+  --v-tooltip-box-shadow: 0px 0 10px rgba(0, 0, 0, 0.16);
+  --v-tooltip-transition-duration: 0.25s;
+  --v-tooltip-transition-delay: 0.1s;
+  --v-tooltip-transition-timing-function: ease;
+}
+.data-v-tooltip {
+  position: relative;
+}
+.data-v-tooltip {
+  & + .tooltip {
+    z-index: 2147483647;
+    content: attr(data-v-tooltip);
+    position: absolute;
+    max-width: var(--v-tooltip-width);
+    width: calc(100% - 2rem);
+    transition-property: all;
+    transition-duration: var(--v-tooltip-transition-duration);
+    transition-delay: 0s;
+    transition-timing-function: var(--v-tooltip-transition-timing-function);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    & .tooltip-container {
+      background-color: var(--v-tooltip-background-color);
+      border-radius: var(--v-tooltip-border-radius);
+      color: var(--v-tooltip-color);
+      padding: var(--v-tooltip-padding);
+      border: var(--v-tooltip-border);
+      box-shadow: var(--v-tooltip-box-shadow);
+      font-size: var(--v-tooltip-font-size);
+      position: relative;
+      top: 8px;
+    }
+
+    & .tooltip-point {
+      width: 0;
+      height: 0;
+      order: -1;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+
+      border: 6px solid black;
+      border-color: #fff #fff transparent transparent;
+
+      transform-origin: 0 0;
+      transform: rotate(-45deg);
+
+      box-shadow: 3px -3px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+.data-v-tooltip:hover + .tooltip,
+.data-v-tooltip:active + .tooltip {
+  transition-duration: var(--v-tooltip-transition-duration);
+  transition-delay: var(--v-tooltip-transition-delay);
+  transition-timing-function: var(--v-tooltip-transition-timing-function);
+  opacity: 1;
+  visibility: visible;
+}
+
+#input-help-tooltip + .tooltip {
+  max-width: 250px;
+}

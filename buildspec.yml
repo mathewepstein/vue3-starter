@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install --global pnpm@8.9.2
+      - pnpm i
+      - echo Installing AWS Tools, Pip and AWSCLI
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+  build:
+    commands:
+      - echo Running Build
+      - pnpm build --mode ${ENV}
+  post_build:
+    commands:
+      - aws s3 rm $S3_BUCKET --recursive --exclude "robots.txt"
+      - echo moving dist file to $S3_BUCKET
+      - aws s3 cp ./dist $S3_BUCKET --recursive
+      - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"

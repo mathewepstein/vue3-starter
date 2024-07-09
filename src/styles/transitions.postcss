@@ -1,0 +1,110 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: var(--tls-transition-duration);
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+  z-index: 900;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-in-enter-active,
+.fade-in-leave-active {
+  transition-duration: var(--tls-transition-duration);
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+  z-index: 900;
+}
+
+.fade-in-enter-from,
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition-duration: var(--tls-transition-duration);
+  transition-property: transform;
+  transition-timing-function: ease;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(100%);
+}
+
+.error-enter-active,
+.error-leave-active {
+  transition:
+    opacity var(--tls-transition-duration) linear 0.2s,
+    transform 0.3s linear 0s;
+  opacity: 1;
+}
+
+.error-enter-from,
+.error-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.slide-out-enter-active,
+.slide-out-leave-active {
+  transition:
+    opacity var(--tls-transition-duration) linear 0.2s,
+    transform 0.3s linear 0s;
+  opacity: 1;
+}
+
+.slide-out-enter-from,
+.slide-out-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.animate-transition-in {
+  animation: 1s ease-out 0s 1 animateTransitionIn;
+}
+
+@keyframes animateTransitionIn {
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Counter.vue > should render 1`] = `"<div>10 <button class=\\"inc\\"> + </button><button class=\\"dec\\"> - </button></div>"`;
-
-exports[`HomeBanner.vue > should render 1`] = `"<h1>soon</h1>"`;
-
-exports[`HomeHero.vue > should render 1`] = `"<div>Welcome</div>"`;

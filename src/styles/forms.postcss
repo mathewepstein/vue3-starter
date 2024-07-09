@@ -1,0 +1,88 @@
+.input-container {
+  @apply mb-1rem w-full;
+
+  & label {
+    @apply font-semibold mb-0.4rem;
+  }
+
+  input,
+  select,
+  textarea {
+    transition: all 0.3s ease;
+    @apply border border-color-border text-text-gray text-sm p-2 rounded w-full;
+
+    &:disabled {
+      @apply border-color-transparent bg-white px-0;
+    }
+  }
+
+  input,
+  select {
+    @apply h-2.75rem;
+  }
+
+  & select {
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    padding-right: 1.5rem;
+    background: right center
+      url("data:image/svg+xml;utf8,<svg fill='%23000000' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
+      no-repeat;
+  }
+
+  &.error {
+    & input {
+      @apply border-color-error;
+    }
+  }
+
+  &.valid {
+    & label[for='accessCode'] {
+      position: relative;
+
+      &:after {
+        content: '';
+        @apply i-carbon-checkmark absolute right-12px top-35px text-emerald-600;
+      }
+    }
+  }
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: var(--tls-primary-color);
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid #bfbfbf;
+  border-radius: var(--cd-border-radius);
+
+  display: grid;
+  place-content: center;
+
+  &::before {
+    content: '';
+    width: 15px;
+    height: 10px;
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.944' height='9.978' viewBox='0 0 14.944 9.978'%3E%3Cpath d='M6.944,15.4a.627.627,0,0,1,.064-.92.654.654,0,0,1,.92.095l3.681,4.284,9.012-8.218a.663.663,0,0,1,.889.984l-9.52,8.663a.625.625,0,0,1-.92-.064Z' transform='translate(-6.772 -10.484)' fill='%23fff'/%3E%3C/svg%3E%0A");
+  }
+
+  &:checked {
+    background: var(--tls-primary-color);
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

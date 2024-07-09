@@ -1,0 +1,68 @@
+table {
+  @apply w-full border-collapse;
+
+  & th {
+  }
+
+  & td,
+  & th {
+    @apply px-0.5rem py-1rem text-left min-h-2.3rem;
+  }
+
+  & tbody tr {
+    &:not(:last-child) {
+      @apply border-b border-color-border-gray;
+    }
+    /* Zebra striping */
+    &:nth-of-type(odd) {
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* Force table to not act like table anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    @apply block;
+  }
+
+  table {
+    /* Hide table headers (but not display: none;, for accessibility) */
+    & thead tr {
+      @apply absolute -top-9999px -left-9999px;
+    }
+
+    & tbody tr:not(:last-child) {
+      @apply border-color-border-gray;
+    }
+
+    & td {
+      @apply flex border-b border-color-transparent relative break-all text-sm;
+
+      & span {
+        @apply min-w-66%;
+      }
+
+      &:before {
+        @apply block min-w-34% pr-1rem whitespace-nowrap;
+      }
+    }
+
+    & td:before {
+      width: 45%;
+      padding-right: 0.5rem;
+      white-space: nowrap;
+
+      content: attr(label);
+      font-weight: bold;
+    }
+
+    & td:empty {
+      min-height: 2rem;
+    }
+  }
+}

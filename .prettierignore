@@ -4,10 +4,3 @@
 **/.hg
 **/node_modules
 **/test
-**/components
-**/composables
-**/layouts
-**/modules
-**/pages
-*.vue
-*.ts
