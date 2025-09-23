@@ -16,11 +16,13 @@ import postcssNesting from 'postcss-nesting'
 import { unheadVueComposablesImports } from '@unhead/vue'
 
 export default defineConfig({
+  assetsInclude: ['**/*.riv'],
   css: {
     postcss: {
       plugins: [postcssNesting],
     },
   },
+
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -40,18 +42,13 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/],
     }),
-
     VueI18n({
       runtimeOnly: false,
       compositionOnly: true,
       fullInstall: true,
       include: [path.resolve(__dirname, './locales/**')],
-    }),
-
-    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
-    Layouts(),
-
-    // https://github.com/unplugin/unplugin-auto-import
+    }), // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
+    Layouts(), // https://github.com/unplugin/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
@@ -70,9 +67,7 @@ export default defineConfig({
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true,
       },
-    }),
-
-    // https://github.com/antfu/vite-plugin-components
+    }), // https://github.com/antfu/vite-plugin-components
     Components({
       dts: true,
       types: [
@@ -81,9 +76,7 @@ export default defineConfig({
           names: ['RouterLink', 'RouterView'],
         },
       ],
-    }),
-
-    // https://github.com/antfu/unocss
+    }), // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     Unocss(),
     basicSsl(),
@@ -100,13 +93,13 @@ export default defineConfig({
 
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
-    crittersOptions: {
+    beastiesOptions: {
       preload: 'media',
     },
     script: 'async',
     formatting: 'minify',
     dirStyle: 'nested',
-    rootContainerId: 'platformlinkapp',
+    rootContainerId: 'memberapp',
     includedRoutes(paths) {
       return paths.filter((i) => !i.includes('member'))
     },
@@ -118,5 +111,12 @@ export default defineConfig({
   ssr: {
     // TODO: workaround until they support native ESM
     noExternal: ['workbox-window', /vue-i18n/],
+  },
+
+  build: {
+    sourcemap: true,
+    modulePreload: {
+      resolveDependencies: () => [],
+    },
   },
 })

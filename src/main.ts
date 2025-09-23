@@ -38,6 +38,6 @@ export const createApp = ViteSSG(
     ).forEach((i) => i.install?.(ctx))
   },
   {
-    rootContainer: '#platformlinkapp',
+    rootContainer: '#app',
   }
 )

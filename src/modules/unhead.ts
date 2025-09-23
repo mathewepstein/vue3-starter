@@ -1,4 +1,4 @@
-import { createHead } from '@unhead/vue'
+import { createHead } from '@unhead/vue/client'
 import { type AppModule } from '~/types'
 
 export const install: AppModule = ({ app }) => {
